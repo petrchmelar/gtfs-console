@@ -1,13 +1,15 @@
 from fnmatch import fnmatch
 from typing import Annotated
+
+import requests
+import urllib3
 from config import CONFIG
 from timetable import get_timetables, get_stops
 from gtfs_kit import read_feed
 import logging
 from datetime import datetime
 from zivyobraz_exporter import export
-
-logging.basicConfig(level=logging.INFO)
+from tqdm import tqdm
 
 import typer
 
@@ -28,7 +30,12 @@ def list_stops(pattern: str = "*"):
 
 @app.command()
 def update_feed_file():
-    urllib.request.urlretrieve(CONFIG.feed_url, CONFIG.feed_storage)
+    response = requests.get(CONFIG.feed_url, stream=True)
+
+    with open(CONFIG.feed_storage, "wb") as handle:
+        for data in response.iter_content():
+            handle.write(data)
+
     print(f"Feed file {CONFIG.feed_storage} updated")
 
 
