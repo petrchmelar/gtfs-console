@@ -1,29 +1,15 @@
-from dataclasses import asdict
 from fnmatch import fnmatch
-from typing import Annotated, Sequence
-import streamlit as st
-import pandas as pd
-import numpy as np
+from typing import Annotated
 from config import CONFIG
-from timetable import get_timetables, get_stops, Timetable, Trip
+from timetable import get_timetables, get_stops
 from gtfs_kit import read_feed
 import logging
-from datetime import datetime, timedelta
-
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import plotly.io as pio
-from jinja2 import Environment, FileSystemLoader
-from html2image import Html2Image
-import imgkit
-from typing import cast
+from datetime import datetime
 from zivyobraz_exporter import export
 
 logging.basicConfig(level=logging.INFO)
-import urllib.request
 
 import typer
-import requests
 
 app = typer.Typer()
 
