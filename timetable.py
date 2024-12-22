@@ -14,6 +14,7 @@ class Trip:
     headsign: str
     short_name: str
     departure_time: str
+    wheelchair_accessible: int
 
     def __str__(self):
         return f"{self.short_name} - {self.headsign} - {self.departure_time}"
@@ -31,6 +32,7 @@ class Timetable:
 
 def get_stops(feed: Feed) -> list[tuple[str, str]]:
     stops_df = gk.get_stops(feed)
+    stops_df = stops_df[stops_df["stop_id"].notna() & stops_df["stop_name"].notna()]
     return list(zip(stops_df["stop_id"], stops_df["stop_name"]))
 
 
@@ -90,6 +92,7 @@ def get_timetables(
                     headsign=timetable_row.trip_headsign,
                     short_name=timetable_row.route_short_name,
                     departure_time=timetable_row.departure_time,
+                    wheelchair_accessible=timetable_row.wheelchair_accessible,
                 )
             )
 

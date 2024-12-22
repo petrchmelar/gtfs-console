@@ -23,6 +23,9 @@ def export(timetables: Sequence[Timetable], prefix: str = "pt"):
             request_values[f"{prefix}_{timetable_idx}_{trip_idx}_departure_time"] = (
                 trip.departure_time
             )
+            request_values[
+                f"{prefix}_{timetable_idx}_{trip_idx}_wheelchair_accessible"
+            ] = trip.wheelchair_accessible
 
     request_url = "http://in.zivyobraz.eu/?"
     requests.get(request_url, params=request_values)

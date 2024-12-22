@@ -2,14 +2,11 @@ from fnmatch import fnmatch
 from typing import Annotated
 
 import requests
-import urllib3
 from config import CONFIG
 from timetable import get_timetables, get_stops
 from gtfs_kit import read_feed
-import logging
 from datetime import datetime
 from zivyobraz_exporter import export
-from tqdm import tqdm
 
 import typer
 
@@ -24,7 +21,7 @@ def list_stops(pattern: str = "*"):
     feed = read_feed(CONFIG.feed_storage, dist_units="km")
     stops = get_stops(feed)
     for code, name in stops:
-        if fnmatch(name, pattern):
+        if fnmatch(name, pattern) or fnmatch(code, pattern):
             print(f"{code} - {name}")
 
 
@@ -45,7 +42,7 @@ def timetable(
     stop_names: Annotated[list[str] | None, typer.Option(help="Stop names")] = None,
     from_datetime: Annotated[
         datetime | None, typer.Option(help="From datetime")
-    ] = None,
+    ] = datetime.now(),
     number_of_trips: Annotated[int, typer.Option(help="Number of trips")] = 4,
     export_zivyobraz: Annotated[
         bool, typer.Option(help="Export to Zivy obraz")

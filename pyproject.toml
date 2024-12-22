@@ -11,4 +11,5 @@ dependencies = [
     "typer>=0.15.1",
     "tqdm>=4.67.1",
     "requests>=2.32.3",
+    "imgkit>=1.2.3",
 ]

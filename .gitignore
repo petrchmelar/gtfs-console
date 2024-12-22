@@ -10,5 +10,8 @@ wheels/
 .venv
 
 # gtfs-console specific
-config.yaml
+config*.yaml
 *.zip
+
+# eink-server specific
+*.png
