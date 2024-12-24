@@ -5,7 +5,6 @@ import pandas as pd
 
 from gtfs_kit import Feed
 import gtfs_kit as gk
-from fnmatch import filter
 import logging
 
 

@@ -1,7 +1,7 @@
 [project]
-name = "timetable"
+name = "gtfsconsole"
 version = "0.1.0"
-description = "Add your description here"
+description = "GTFS console"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -12,4 +12,6 @@ dependencies = [
     "tqdm>=4.67.1",
     "requests>=2.32.3",
     "imgkit>=1.2.3",
+    "html2image>=2.0.5",
+    "fastapi[standard]>=0.115.6",
 ]

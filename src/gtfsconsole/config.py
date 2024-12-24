@@ -16,6 +16,7 @@ class Config(BaseSettings):
     feed_url: str
     feed_storage: Path = Path("gtfs.zip")
     zivyobraz_import_key: str
+    browser_executable: str
 
     @classmethod
     def settings_customise_sources(

@@ -15,3 +15,6 @@ config*.yaml
 
 # eink-server specific
 *.png
+
+# nodejs
+node_modules/

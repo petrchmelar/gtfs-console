@@ -3,10 +3,22 @@
 
 <head>
     <title>Timetable</title>
+    <!-- <link href="./templates/output.css" rel="stylesheet"> -->
 </head>
 
-<body width="400px" height="300px">
-    <h1>{{ datetime }}</h1>
+<body style="background-color: white;">
+    {% for row in timetables %}
+    <table class="table-fixed">
+        <h3>{{ row.stop_name }}</h3>
+        {% for trip in row.trips %}
+        <tr>
+            <td>{{ trip.short_name }}</td>
+            <td>{{ trip.headsign }}</td>
+            <td>{{ trip.departure_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endfor %}
 </body>
 
 </html>

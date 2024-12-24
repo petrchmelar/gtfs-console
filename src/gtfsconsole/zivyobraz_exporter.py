@@ -1,8 +1,8 @@
 from typing import Sequence
 import requests
-from timetable import Timetable
+from gtfsconsole.timetable import Timetable
 
-from config import CONFIG
+from gtfsconsole.config import CONFIG
 
 
 def export(timetables: Sequence[Timetable], prefix: str = "pt"):

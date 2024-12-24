@@ -2,11 +2,11 @@ from fnmatch import fnmatch
 from typing import Annotated
 
 import requests
-from config import CONFIG
-from timetable import get_timetables, get_stops
+from gtfsconsole.config import CONFIG
+from gtfsconsole.timetable import get_timetables, get_stops
 from gtfs_kit import read_feed
 from datetime import datetime
-from zivyobraz_exporter import export
+from gtfsconsole.zivyobraz_exporter import export
 
 import typer
 
